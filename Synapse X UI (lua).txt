@@ -23,7 +23,7 @@ local UTG = Instance.new("TextButton")
 local openmain = Instance.new("Frame")
 local open = Instance.new("TextButton")
 
---Properties:
+-- Scripts
 
 ScreenGui.Parent = game.CoreGui
 
@@ -54,7 +54,7 @@ close.BorderColor3 = Color3.fromRGB(52, 52, 52)
 close.Position = UDim2.new(0.957415581, 0, 0, 0)
 close.Size = UDim2.new(0, 29, 0, 35)
 close.Font = Enum.Font.SourceSans
-close.Text = "X"
+close.Text = "_"
 close.TextColor3 = Color3.fromRGB(255, 255, 255)
 close.TextScaled = true
 close.TextSize = 14.000
