@@ -1,0 +1,3237 @@
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+end
+
+if not game.CoreGui:FindFirstChild'NDS' then
+local NDS = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local SideBar = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local MiscTabBtn = Instance.new("TextButton")
+local UtilitiesTabBtn = Instance.new("TextButton")
+local TeleportsTabBtn = Instance.new("TextButton")
+local LocalPlayerTabBtn = Instance.new("TextButton")
+local CreditsTabBtn = Instance.new("TextButton")
+local HomeTabBtn = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Title = Instance.new("TextLabel")
+local UICorner_3 = Instance.new("UICorner")
+local CloseGUI = Instance.new("ImageButton")
+local AllTabs = Instance.new("Frame")
+local TeleportsTab = Instance.new("Frame")
+local UIListLayout = Instance.new("UIListLayout")
+local TPToIsland = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local TPToLobby = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local TPToChina = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+local TpTextbox = Instance.new("Frame")
+local UICorner_7 = Instance.new("UICorner")
+local xdd = Instance.new("TextLabel")
+local TP = Instance.new("TextBox")
+local UICorner_8 = Instance.new("UICorner")
+local UICorner_9 = Instance.new("UICorner")
+local TabChangingTransparent = Instance.new("Frame")
+local UICorner_10 = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
+local MiscTab = Instance.new("Frame")
+local RemoveFallDamage = Instance.new("TextButton")
+local UICorner_11 = Instance.new("UICorner")
+local StealBalloon = Instance.new("TextButton")
+local UICorner_12 = Instance.new("UICorner")
+local NextDisaster = Instance.new("TextButton")
+local UICorner_13 = Instance.new("UICorner")
+local ToggleVoteMap = Instance.new("TextButton")
+local UICorner_14 = Instance.new("UICorner")
+local tsssss1 = Instance.new("Frame")
+local UICorner_15 = Instance.new("UICorner")
+local tsssssss = Instance.new("Frame")
+local UICorner_16 = Instance.new("UICorner")
+local UIListLayout_2 = Instance.new("UIListLayout")
+local ToggleSpamSounds = Instance.new("TextButton")
+local UICorner_17 = Instance.new("UICorner")
+local zero = Instance.new("Frame")
+local UICorner_18 = Instance.new("UICorner")
+local twoo = Instance.new("Frame")
+local UICorner_19 = Instance.new("UICorner")
+local ToggleSpamSoundsWarning = Instance.new("TextLabel")
+local ToggleAutofarm = Instance.new("TextButton")
+local UICorner_20 = Instance.new("UICorner")
+local fa = Instance.new("Frame")
+local UICorner_21 = Instance.new("UICorner")
+local fa2 = Instance.new("Frame")
+local UICorner_22 = Instance.new("UICorner")
+local AutoDisaster = Instance.new("TextButton")
+local UICorner_23 = Instance.new("UICorner")
+local ah = Instance.new("Frame")
+local UICorner_24 = Instance.new("UICorner")
+local llozz = Instance.new("Frame")
+local UICorner_25 = Instance.new("UICorner")
+local RemoveFDRespawn = Instance.new("TextButton")
+local UICorner_26 = Instance.new("UICorner")
+local dam = Instance.new("Frame")
+local UICorner_27 = Instance.new("UICorner")
+local dammm = Instance.new("Frame")
+local UICorner_28 = Instance.new("UICorner")
+local UtilitiesTab = Instance.new("Frame")
+local UIListLayout_3 = Instance.new("UIListLayout")
+local RmBlizzard = Instance.new("TextButton")
+local UICorner_29 = Instance.new("UICorner")
+local RmSandStorm = Instance.new("TextButton")
+local UICorner_30 = Instance.new("UICorner")
+local arbze = Instance.new("TextButton")
+local UICorner_31 = Instance.new("UICorner")
+local ToggleFrame12 = Instance.new("Frame")
+local UICorner_32 = Instance.new("UICorner")
+local ToggleSwitch21 = Instance.new("Frame")
+local UICorner_33 = Instance.new("UICorner")
+local arsse = Instance.new("TextButton")
+local UICorner_34 = Instance.new("UICorner")
+local tfff = Instance.new("Frame")
+local UICorner_35 = Instance.new("UICorner")
+local some = Instance.new("Frame")
+local UICorner_36 = Instance.new("UICorner")
+local LocalPlayerTab = Instance.new("Frame")
+local SetWsTextbox = Instance.new("Frame")
+local UICorner_37 = Instance.new("UICorner")
+local Desc = Instance.new("TextLabel")
+local SetWs = Instance.new("TextBox")
+local UICorner_38 = Instance.new("UICorner")
+local UIListLayout_4 = Instance.new("UIListLayout")
+local SetJpTextbox = Instance.new("Frame")
+local UICorner_39 = Instance.new("UICorner")
+local Descc = Instance.new("TextLabel")
+local SetJp = Instance.new("TextBox")
+local UICorner_40 = Instance.new("UICorner")
+local Tanchor = Instance.new("TextButton")
+local UICorner_41 = Instance.new("UICorner")
+local rwq = Instance.new("Frame")
+local UICorner_42 = Instance.new("UICorner")
+local cxv = Instance.new("Frame")
+local UICorner_43 = Instance.new("UICorner")
+local CreditsTab = Instance.new("Frame")
+local UIListLayout_5 = Instance.new("UIListLayout")
+local Credit1 = Instance.new("TextLabel")
+local Credit2 = Instance.new("TextLabel")
+local Bar = Instance.new("TextLabel")
+local Credit3 = Instance.new("TextLabel")
+local HomeTab = Instance.new("Frame")
+local UserInfo = Instance.new("Frame")
+local UICorner_44 = Instance.new("UICorner")
+local UserPhoto = Instance.new("ImageLabel")
+local UICorner_45 = Instance.new("UICorner")
+local DisplayName = Instance.new("TextLabel")
+local UserName = Instance.new("TextLabel")
+local ServerTimer = Instance.new("TextLabel")
+
+NDS.Name = "NDS"
+NDS.Parent = game:GetService'CoreGui'
+NDS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = NDS
+Main.AnchorPoint = Vector2.new(0.5, 0.5)
+Main.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Main.BorderSizePixel = 0
+Main.ClipsDescendants = true
+Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+Main.Size = UDim2.new(0, 583, 0, 344)
+
+SideBar.Name = "SideBar"
+SideBar.Parent = Main
+SideBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+SideBar.BorderSizePixel = 0
+SideBar.Size = UDim2.new(0, 150, 0, 344)
+UICorner.CornerRadius = UDim.new(0, 5)
+UICorner.Parent = SideBar
+MiscTabBtn.Name = "MiscTabBtn"
+MiscTabBtn.Parent = SideBar
+MiscTabBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MiscTabBtn.BackgroundTransparency = 1.000
+MiscTabBtn.BorderSizePixel = 0
+MiscTabBtn.Position = UDim2.new(0, 0, 0.235465124, 0)
+MiscTabBtn.Size = UDim2.new(0, 150, 0, 50)
+MiscTabBtn.AutoButtonColor = false
+MiscTabBtn.Font = Enum.Font.SourceSansSemibold
+MiscTabBtn.Text = "Misc"
+MiscTabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MiscTabBtn.TextSize = 25.000
+UtilitiesTabBtn.Name = "UtilitiesTabBtn"
+UtilitiesTabBtn.Parent = SideBar
+UtilitiesTabBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UtilitiesTabBtn.BackgroundTransparency = 1.000
+UtilitiesTabBtn.BorderSizePixel = 0
+UtilitiesTabBtn.Position = UDim2.new(0, 0, 0.380813956, 0)
+UtilitiesTabBtn.Size = UDim2.new(0, 150, 0, 50)
+UtilitiesTabBtn.AutoButtonColor = false
+UtilitiesTabBtn.Font = Enum.Font.SourceSansSemibold
+UtilitiesTabBtn.Text = "Utilities"
+UtilitiesTabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+UtilitiesTabBtn.TextSize = 25.000
+TeleportsTabBtn.Name = "TeleportsTabBtn"
+TeleportsTabBtn.Parent = SideBar
+TeleportsTabBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TeleportsTabBtn.BackgroundTransparency = 1.000
+TeleportsTabBtn.BorderSizePixel = 0
+TeleportsTabBtn.Position = UDim2.new(0, 0, 0.526162803, 0)
+TeleportsTabBtn.Size = UDim2.new(0, 150, 0, 50)
+TeleportsTabBtn.AutoButtonColor = false
+TeleportsTabBtn.Font = Enum.Font.SourceSansSemibold
+TeleportsTabBtn.Text = "Teleports"
+TeleportsTabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+TeleportsTabBtn.TextSize = 25.000
+LocalPlayerTabBtn.Name = "LocalPlayerTabBtn"
+LocalPlayerTabBtn.Parent = SideBar
+LocalPlayerTabBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LocalPlayerTabBtn.BackgroundTransparency = 1.000
+LocalPlayerTabBtn.BorderSizePixel = 0
+LocalPlayerTabBtn.Position = UDim2.new(0, 0, 0.674418569, 0)
+LocalPlayerTabBtn.Size = UDim2.new(0, 150, 0, 50)
+LocalPlayerTabBtn.AutoButtonColor = false
+LocalPlayerTabBtn.Font = Enum.Font.SourceSansSemibold
+LocalPlayerTabBtn.Text = "LocalPlayer"
+LocalPlayerTabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+LocalPlayerTabBtn.TextSize = 25.000
+CreditsTabBtn.Name = "CreditsTabBtn"
+CreditsTabBtn.Parent = SideBar
+CreditsTabBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CreditsTabBtn.BackgroundTransparency = 1.000
+CreditsTabBtn.BorderSizePixel = 0
+CreditsTabBtn.Position = UDim2.new(0, 0, 0.816860497, 0)
+CreditsTabBtn.Size = UDim2.new(0, 150, 0, 50)
+CreditsTabBtn.AutoButtonColor = false
+CreditsTabBtn.Font = Enum.Font.SourceSansSemibold
+CreditsTabBtn.Text = "Credits"
+CreditsTabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CreditsTabBtn.TextSize = 25.000
+HomeTabBtn.Name = "HomeTabBtn"
+HomeTabBtn.Parent = SideBar
+HomeTabBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HomeTabBtn.BackgroundTransparency = 1.000
+HomeTabBtn.BorderSizePixel = 0
+HomeTabBtn.Position = UDim2.new(0, 0, 0.090116322, 0)
+HomeTabBtn.Size = UDim2.new(0, 150, 0, 50)
+HomeTabBtn.AutoButtonColor = false
+HomeTabBtn.Font = Enum.Font.SourceSansSemibold
+HomeTabBtn.Text = "Home"
+HomeTabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+HomeTabBtn.TextSize = 25.000
+UICorner_2.CornerRadius = UDim.new(0, 5)
+UICorner_2.Parent = Main
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 583, 0, 32)
+Title.Font = Enum.Font.SourceSansBold
+Title.Text = "Natural Disaster Survival"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 27.000
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+UICorner_3.CornerRadius = UDim.new(0, 5)
+UICorner_3.Parent = Title
+CloseGUI.Name = "CloseGUI"
+CloseGUI.Parent = Title
+CloseGUI.BackgroundTransparency = 1.000
+CloseGUI.Position = UDim2.new(0.939108074, 0, 0.09375, 0)
+CloseGUI.Size = UDim2.new(0, 25, 0, 25)
+CloseGUI.ZIndex = 2
+CloseGUI.AutoButtonColor = false
+CloseGUI.Image = "rbxassetid://3926305904"
+CloseGUI.ImageRectOffset = Vector2.new(924, 724)
+CloseGUI.ImageRectSize = Vector2.new(36, 36)
+AllTabs.Name = "AllTabs"
+AllTabs.Parent = Main
+AllTabs.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+AllTabs.BorderSizePixel = 0
+AllTabs.ClipsDescendants = true
+AllTabs.Position = UDim2.new(0.267581463, 0, 0.116279073, 0)
+AllTabs.Size = UDim2.new(0, 416, 0, 295)
+TeleportsTab.Name = "TeleportsTab"
+TeleportsTab.Parent = AllTabs
+TeleportsTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TeleportsTab.BackgroundTransparency = 1.000
+TeleportsTab.Size = UDim2.new(0, 416, 0, 295)
+TeleportsTab.Visible = false
+UIListLayout.Parent = TeleportsTab
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 5)
+TPToIsland.Name = "TPToIsland"
+TPToIsland.Parent = TeleportsTab
+TPToIsland.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+TPToIsland.Position = UDim2.new(0.0168269239, 0, 0.311864406, 0)
+TPToIsland.Size = UDim2.new(0, 402, 0, 31)
+TPToIsland.AutoButtonColor = false
+TPToIsland.Font = Enum.Font.SourceSansBold
+TPToIsland.Text = "Teleport To Island"
+TPToIsland.TextColor3 = Color3.fromRGB(255, 255, 255)
+TPToIsland.TextSize = 20.000
+UICorner_4.CornerRadius = UDim.new(0, 5)
+UICorner_4.Parent = TPToIsland
+TPToLobby.Name = "TPToLobby"
+TPToLobby.Parent = TeleportsTab
+TPToLobby.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+TPToLobby.Position = UDim2.new(0.0168269239, 0, 0.311864406, 0)
+TPToLobby.Size = UDim2.new(0, 402, 0, 31)
+TPToLobby.AutoButtonColor = false
+TPToLobby.Font = Enum.Font.SourceSansBold
+TPToLobby.Text = "Teleport To Lobby"
+TPToLobby.TextColor3 = Color3.fromRGB(255, 255, 255)
+TPToLobby.TextSize = 20.000
+UICorner_5.CornerRadius = UDim.new(0, 5)
+UICorner_5.Parent = TPToLobby
+TPToChina.Name = "TPToChina"
+TPToChina.Parent = TeleportsTab
+TPToChina.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+TPToChina.Position = UDim2.new(0.0168269239, 0, 0.311864406, 0)
+TPToChina.Size = UDim2.new(0, 402, 0, 31)
+TPToChina.AutoButtonColor = false
+TPToChina.Font = Enum.Font.SourceSansBold
+TPToChina.Text = "Teleport To Chinese Server"
+TPToChina.TextColor3 = Color3.fromRGB(255, 255, 255)
+TPToChina.TextSize = 20.000
+UICorner_6.CornerRadius = UDim.new(0, 5)
+UICorner_6.Parent = TPToChina
+TpTextbox.Name = "TpTextbox"
+TpTextbox.Parent = TeleportsTab
+TpTextbox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+TpTextbox.Position = UDim2.new(0.0168269239, 0, 0, 0)
+TpTextbox.Size = UDim2.new(0, 402, 0, 31)
+
+UICorner_7.CornerRadius = UDim.new(0, 5)
+UICorner_7.Parent = TpTextbox
+
+xdd.Name = "xdd"
+xdd.Parent = TpTextbox
+xdd.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+xdd.BackgroundTransparency = 1.000
+xdd.Size = UDim2.new(0, 172, 0, 31)
+xdd.Font = Enum.Font.SourceSansBold
+xdd.Text = "Teleport To Someone"
+xdd.TextColor3 = Color3.fromRGB(255, 255, 255)
+xdd.TextScaled = true
+xdd.TextSize = 14.000
+xdd.TextWrapped = true
+xdd.TextXAlignment = Enum.TextXAlignment.Left
+
+TP.Name = "TP"
+TP.Parent = TpTextbox
+TP.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TP.Position = UDim2.new(0.808457732, 0, 0.161290407, 0)
+TP.Size = UDim2.new(0, 70, 0, 22)
+TP.Font = Enum.Font.Nunito
+TP.PlaceholderColor3 = Color3.fromRGB(135, 135, 135)
+TP.PlaceholderText = "Player Name"
+TP.Text = ""
+TP.TextColor3 = Color3.fromRGB(255, 255, 255)
+TP.TextSize = 14.000
+TP.TextWrapped = true
+
+UICorner_8.CornerRadius = UDim.new(0, 5)
+UICorner_8.Parent = TP
+
+UICorner_9.CornerRadius = UDim.new(0, 5)
+UICorner_9.Parent = AllTabs                 
+TabChangingTransparent.Name = "TabChangingTransparent"
+TabChangingTransparent.Parent = AllTabs
+TabChangingTransparent.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+TabChangingTransparent.BackgroundTransparency = 1.000
+TabChangingTransparent.BorderSizePixel = 0
+TabChangingTransparent.Size = UDim2.new(0, 416, 0, 295)
+TabChangingTransparent.ZIndex = 999999999  
+UICorner_10.CornerRadius = UDim.new(0, 5)
+UICorner_10.Parent = TabChangingTransparent     
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(206, 206, 206)), ColorSequenceKeypoint.new(0.66, Color3.fromRGB(88, 88, 88)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(45, 45, 45))}
+UIGradient.Parent = TabChangingTransparent
+       
+MiscTab.Name = "MiscTab"
+MiscTab.Parent = AllTabs
+MiscTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MiscTab.BackgroundTransparency = 1.000
+MiscTab.Size = UDim2.new(0, 416, 0, 295)
+MiscTab.Visible = false
+
+RemoveFallDamage.Name = "RemoveFallDamage"
+RemoveFallDamage.Parent = MiscTab
+RemoveFallDamage.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+RemoveFallDamage.Position = UDim2.new(0.0168269239, 0, 0.0271186531, 0)
+RemoveFallDamage.Size = UDim2.new(0, 402, 0, 31)
+RemoveFallDamage.AutoButtonColor = false
+RemoveFallDamage.Font = Enum.Font.SourceSansBold
+RemoveFallDamage.Text = "Remove Fall Damage"
+RemoveFallDamage.TextColor3 = Color3.fromRGB(255   , 255, 255)
+RemoveFallDamage.TextSize = 20.000
+       
+UICorner_11.CornerRadius = UDim.new(0, 5)
+UICorner_11.Parent = RemoveFallDamage
+
+StealBalloon.Name = "StealBalloon"     
+StealBalloon.Parent = MiscTab
+StealBalloon.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+StealBalloon.Position = UDim2.new(0.0168269239, 0, 0.162711889, 0)
+StealBalloon.Size = UDim2.new(0, 402, 0, 31)    
+StealBalloon.AutoButtonColor = false
+StealBalloon.Font = Enum.Font.SourceSansBold    
+StealBalloon.Text = "Steal Balloon From Someone"  
+StealBalloon.TextColor3 = Color3.fromRGB(255,  255, 255)  
+StealBalloon.TextSize = 20.000
+
+UICorner_12.CornerRadius = UDim.new(0, 5)
+UICorner_12.Parent = StealBalloon
+
+NextDisaster.Name = "NextDisaster"
+NextDisaster.Parent = MiscTab
+NextDisaster.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+NextDisaster.Position = UDim2.new(0.0168269239, 0, 0.311864406, 0)
+NextDisaster.Size = UDim2.new(0, 402, 0, 31)
+NextDisaster.AutoButtonColor = false
+NextDisaster.Font = Enum.Font.SourceSansBold
+NextDisaster.Text = "Notify Next Disaster"
+NextDisaster.TextColor3 = Color3.fromRGB(255, 255, 255)
+NextDisaster.TextSize = 20.000
+
+UICorner_13.CornerRadius = UDim.new(0, 5)
+UICorner_13.Parent = NextDisaster
+
+ToggleVoteMap.Name = "ToggleVoteMap"
+ToggleVoteMap.Parent = MiscTab
+ToggleVoteMap.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ToggleVoteMap.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+ToggleVoteMap.Size = UDim2.new(0, 402, 0, 31)
+ToggleVoteMap.AutoButtonColor = false
+ToggleVoteMap.Font = Enum.Font.SourceSansBold
+ToggleVoteMap.Text = "Toggle Vote Map"
+ToggleVoteMap.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleVoteMap.TextSize = 20.000
+ToggleVoteMap.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_14.CornerRadius = UDim.new(0, 5)
+UICorner_14.Parent = ToggleVoteMap
+
+tsssss1.Name = "tsssss1"
+tsssss1.Parent = ToggleVoteMap
+tsssss1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+tsssss1.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+tsssss1.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_15.CornerRadius = UDim.new(0, 5)
+UICorner_15.Parent = tsssss1
+
+tsssssss.Name = "tsssssss"
+tsssssss.Parent = tsssss1
+tsssssss.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+tsssssss.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_16.CornerRadius = UDim.new(0, 5)
+UICorner_16.Parent = tsssssss
+
+UIListLayout_2.Parent = MiscTab
+UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_2.Padding = UDim.new(0, 5)
+
+ToggleSpamSounds.Name = "ToggleSpamSounds"
+ToggleSpamSounds.Parent = MiscTab
+ToggleSpamSounds.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ToggleSpamSounds.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+ToggleSpamSounds.Size = UDim2.new(0, 402, 0, 31)
+ToggleSpamSounds.AutoButtonColor = false
+ToggleSpamSounds.Font = Enum.Font.SourceSansBold
+ToggleSpamSounds.Text = "Toggle Spam Sounds"
+ToggleSpamSounds.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleSpamSounds.TextSize = 20.000
+ToggleSpamSounds.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_17.CornerRadius = UDim.new(0, 5)
+UICorner_17.Parent = ToggleSpamSounds
+
+zero.Name = "zero"
+zero.Parent = ToggleSpamSounds
+zero.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+zero.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+zero.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_18.CornerRadius = UDim.new(0, 5)
+UICorner_18.Parent = zero
+
+twoo.Name = "twoo"
+twoo.Parent = zero
+twoo.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+twoo.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_19.CornerRadius = UDim.new(0, 5)
+UICorner_19.Parent = twoo
+
+ToggleSpamSoundsWarning.Name = "ToggleSpamSoundsWarning"
+ToggleSpamSoundsWarning.Parent = ToggleSpamSounds
+ToggleSpamSoundsWarning.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ToggleSpamSoundsWarning.BackgroundTransparency = 1.000
+ToggleSpamSoundsWarning.Position = UDim2.new(0.405472636, 0, 0, 0)
+ToggleSpamSoundsWarning.Size = UDim2.new(0, 147, 0, 31)
+ToggleSpamSoundsWarning.Font = Enum.Font.SourceSans
+ToggleSpamSoundsWarning.Text = "* LAG WARNING"
+ToggleSpamSoundsWarning.TextColor3 = Color3.fromRGB(255, 0, 0)
+ToggleSpamSoundsWarning.TextSize = 14.000
+ToggleSpamSoundsWarning.TextXAlignment = Enum.TextXAlignment.Left
+
+ToggleAutofarm.Name = "ToggleAutofarm"
+ToggleAutofarm.Parent = MiscTab
+ToggleAutofarm.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ToggleAutofarm.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+ToggleAutofarm.Size = UDim2.new(0, 402, 0, 31)
+ToggleAutofarm.AutoButtonColor = false
+ToggleAutofarm.Font = Enum.Font.SourceSansBold
+ToggleAutofarm.Text = "Toggle Autofarm"
+ToggleAutofarm.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleAutofarm.TextSize = 20.000
+ToggleAutofarm.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_20.CornerRadius = UDim.new(0, 5)
+UICorner_20.Parent = ToggleAutofarm
+
+fa.Name = "fa"
+fa.Parent = ToggleAutofarm
+fa.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+fa.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+fa.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_21.CornerRadius = UDim.new(0, 5)
+UICorner_21.Parent = fa
+
+fa2.Name = "fa2"
+fa2.Parent = fa
+fa2.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+fa2.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_22.CornerRadius = UDim.new(0, 5)
+UICorner_22.Parent = fa2
+
+AutoDisaster.Name = "AutoDisaster"
+AutoDisaster.Parent = MiscTab
+AutoDisaster.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+AutoDisaster.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+AutoDisaster.Size = UDim2.new(0, 402, 0, 31)
+AutoDisaster.AutoButtonColor = false
+AutoDisaster.Font = Enum.Font.SourceSansBold
+AutoDisaster.Text = "Auto Disaster Notifier"
+AutoDisaster.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoDisaster.TextSize = 20.000
+AutoDisaster.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_23.CornerRadius = UDim.new(0, 5)
+UICorner_23.Parent = AutoDisaster
+
+ah.Name = "ah"
+ah.Parent = AutoDisaster
+ah.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ah.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+ah.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_24.CornerRadius = UDim.new(0, 5)
+UICorner_24.Parent = ah
+
+llozz.Name = "llozz"
+llozz.Parent = ah
+llozz.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+llozz.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_25.CornerRadius = UDim.new(0, 5)
+UICorner_25.Parent = llozz
+
+RemoveFDRespawn.Name = "RemoveFDRespawn"
+RemoveFDRespawn.Parent = MiscTab
+RemoveFDRespawn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+RemoveFDRespawn.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+RemoveFDRespawn.Size = UDim2.new(0, 402, 0, 31)
+RemoveFDRespawn.AutoButtonColor = false
+RemoveFDRespawn.Font = Enum.Font.SourceSansBold
+RemoveFDRespawn.Text = "Remove Fall Damage On Respawn"
+RemoveFDRespawn.TextColor3 = Color3.fromRGB(255, 255, 255)
+RemoveFDRespawn.TextSize = 20.000
+RemoveFDRespawn.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_26.CornerRadius = UDim.new(0, 5)
+UICorner_26.Parent = RemoveFDRespawn
+
+dam.Name = "dam"
+dam.Parent = RemoveFDRespawn
+dam.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+dam.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+dam.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_27.CornerRadius = UDim.new(0, 5)
+UICorner_27.Parent = dam
+
+dammm.Name = "dammm"
+dammm.Parent = dam
+dammm.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+dammm.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_28.CornerRadius = UDim.new(0, 5)
+UICorner_28.Parent = dammm
+
+UtilitiesTab.Name = "UtilitiesTab"
+UtilitiesTab.Parent = AllTabs
+UtilitiesTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UtilitiesTab.BackgroundTransparency = 1.000
+UtilitiesTab.Size = UDim2.new(0, 416, 0, 295)
+UtilitiesTab.Visible = false
+
+UIListLayout_3.Parent = UtilitiesTab
+UIListLayout_3.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_3.Padding = UDim.new(0, 5)
+
+RmBlizzard.Name = "RmBlizzard"
+RmBlizzard.Parent = UtilitiesTab
+RmBlizzard.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+RmBlizzard.Position = UDim2.new(0.0168269239, 0, 0.311864406, 0)
+RmBlizzard.Size = UDim2.new(0, 402, 0, 31)
+RmBlizzard.AutoButtonColor = false
+RmBlizzard.Font = Enum.Font.SourceSansBold
+RmBlizzard.Text = "Remove Blizzard Effect"
+RmBlizzard.TextColor3 = Color3.fromRGB(255, 255, 255)
+RmBlizzard.TextSize = 20.000
+
+UICorner_29.CornerRadius = UDim.new(0, 5)
+UICorner_29.Parent = RmBlizzard
+
+RmSandStorm.Name = "RmSandStorm"
+RmSandStorm.Parent = UtilitiesTab
+RmSandStorm.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+RmSandStorm.Position = UDim2.new(0.0168269239, 0, 0.311864406, 0)
+RmSandStorm.Size = UDim2.new(0, 402, 0, 31)
+RmSandStorm.AutoButtonColor = false
+RmSandStorm.Font = Enum.Font.SourceSansBold
+RmSandStorm.Text = "Remove SandStorm Effect"
+RmSandStorm.TextColor3 = Color3.fromRGB(255, 255, 255)
+RmSandStorm.TextSize = 20.000
+
+UICorner_30.CornerRadius = UDim.new(0, 5)
+UICorner_30.Parent = RmSandStorm
+
+arbze.Name = "arbze"
+arbze.Parent = UtilitiesTab
+arbze.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+arbze.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+arbze.Size = UDim2.new(0, 402, 0, 31)
+arbze.AutoButtonColor = false
+arbze.Font = Enum.Font.SourceSansBold
+arbze.Text = "Auto Remove Blizzard Effect"
+arbze.TextColor3 = Color3.fromRGB(255, 255, 255)
+arbze.TextSize = 20.000
+arbze.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_31.CornerRadius = UDim.new(0, 5)
+UICorner_31.Parent = arbze
+
+ToggleFrame12.Name = "ToggleFrame12"
+ToggleFrame12.Parent = arbze
+ToggleFrame12.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ToggleFrame12.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+ToggleFrame12.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_32.CornerRadius = UDim.new(0, 5)
+UICorner_32.Parent = ToggleFrame12
+
+ToggleSwitch21.Name = "ToggleSwitch21"
+ToggleSwitch21.Parent = ToggleFrame12
+ToggleSwitch21.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+ToggleSwitch21.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_33.CornerRadius = UDim.new(0, 5)
+UICorner_33.Parent = ToggleSwitch21
+
+arsse.Name = "arsse"
+arsse.Parent = UtilitiesTab
+arsse.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+arsse.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+arsse.Size = UDim2.new(0, 402, 0, 31)
+arsse.AutoButtonColor = false
+arsse.Font = Enum.Font.SourceSansBold
+arsse.Text = "Auto Remove SandStorm Effect"
+arsse.TextColor3 = Color3.fromRGB(255, 255, 255)
+arsse.TextSize = 20.000
+arsse.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_34.CornerRadius = UDim.new(0, 5)
+UICorner_34.Parent = arsse
+
+tfff.Name = "tfff"
+tfff.Parent = arsse
+tfff.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+tfff.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+tfff.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_35.CornerRadius = UDim.new(0, 5)
+UICorner_35.Parent = tfff
+
+some.Name = "some"
+some.Parent = tfff
+some.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+some.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_36.CornerRadius = UDim.new(0, 5)
+UICorner_36.Parent = some
+
+LocalPlayerTab.Name = "LocalPlayerTab"
+LocalPlayerTab.Parent = AllTabs
+LocalPlayerTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LocalPlayerTab.BackgroundTransparency = 1.000
+LocalPlayerTab.Size = UDim2.new(0, 416, 0, 295)
+LocalPlayerTab.Visible = false
+
+SetWsTextbox.Name = "SetWsTextbox"
+SetWsTextbox.Parent = LocalPlayerTab
+SetWsTextbox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+SetWsTextbox.Position = UDim2.new(0.0168269239, 0, 0, 0)
+SetWsTextbox.Size = UDim2.new(0, 402, 0, 31)
+
+UICorner_37.CornerRadius = UDim.new(0, 5)
+UICorner_37.Parent = SetWsTextbox
+
+Desc.Name = "Desc"
+Desc.Parent = SetWsTextbox
+Desc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Desc.BackgroundTransparency = 1.000
+Desc.Size = UDim2.new(0, 172, 0, 31)
+Desc.Font = Enum.Font.SourceSansBold
+Desc.Text = "Set WalkSpeed"
+Desc.TextColor3 = Color3.fromRGB(255, 255, 255)
+Desc.TextScaled = true
+Desc.TextSize = 14.000
+Desc.TextWrapped = true
+Desc.TextXAlignment = Enum.TextXAlignment.Left
+
+SetWs.Name = "SetWs"
+SetWs.Parent = SetWsTextbox
+SetWs.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+SetWs.Position = UDim2.new(0.808000028, 0, 0.160999998, 0)
+SetWs.Size = UDim2.new(0, 70, 0, 22)
+SetWs.Font = Enum.Font.Nunito
+SetWs.PlaceholderColor3 = Color3.fromRGB(135, 135, 135)
+SetWs.PlaceholderText = "16"
+SetWs.Text = ""
+SetWs.TextColor3 = Color3.fromRGB(255, 255, 255)
+SetWs.TextScaled = true
+SetWs.TextSize = 14.000
+SetWs.TextWrapped = true
+
+UICorner_38.CornerRadius = UDim.new(0, 5)
+UICorner_38.Parent = SetWs
+
+UIListLayout_4.Parent = LocalPlayerTab
+UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_4.Padding = UDim.new(0, 5)
+
+SetJpTextbox.Name = "SetJpTextbox"
+SetJpTextbox.Parent = LocalPlayerTab
+SetJpTextbox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+SetJpTextbox.Position = UDim2.new(0.0168269239, 0, 0, 0)
+SetJpTextbox.Size = UDim2.new(0, 402, 0, 31)
+
+UICorner_39.CornerRadius = UDim.new(0, 5)
+UICorner_39.Parent = SetJpTextbox
+
+Descc.Name = "Descc"
+Descc.Parent = SetJpTextbox
+Descc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Descc.BackgroundTransparency = 1.000
+Descc.Size = UDim2.new(0, 172, 0, 31)
+Descc.Font = Enum.Font.SourceSansBold
+Descc.Text = "Set JumpPower"
+Descc.TextColor3 = Color3.fromRGB(255, 255, 255)
+Descc.TextScaled = true
+Descc.TextSize = 14.000
+Descc.TextWrapped = true
+Descc.TextXAlignment = Enum.TextXAlignment.Left
+
+SetJp.Name = "SetJp"
+SetJp.Parent = SetJpTextbox
+SetJp.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+SetJp.Position = UDim2.new(0.808457732, 0, 0.161290407, 0)
+SetJp.Size = UDim2.new(0, 70, 0, 22)
+SetJp.Font = Enum.Font.Nunito
+SetJp.PlaceholderColor3 = Color3.fromRGB(135, 135, 135)
+SetJp.PlaceholderText = "50"
+SetJp.Text = ""
+SetJp.TextColor3 = Color3.fromRGB(255, 255, 255)
+SetJp.TextScaled = true
+SetJp.TextSize = 14.000
+SetJp.TextWrapped = true
+
+UICorner_40.CornerRadius = UDim.new(0, 5)
+UICorner_40.Parent = SetJp
+
+Tanchor.Name = "Tanchor"
+Tanchor.Parent = LocalPlayerTab
+Tanchor.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Tanchor.Position = UDim2.new(0.0168269239, 0, 0.4779661, 0)
+Tanchor.Size = UDim2.new(0, 402, 0, 31)
+Tanchor.AutoButtonColor = false
+Tanchor.Font = Enum.Font.SourceSansBold
+Tanchor.Text = "Toggle Anchor Yourself"
+Tanchor.TextColor3 = Color3.fromRGB(255, 255, 255)
+Tanchor.TextSize = 20.000
+Tanchor.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_41.CornerRadius = UDim.new(0, 5)
+UICorner_41.Parent = Tanchor
+
+rwq.Name = "rwq"
+rwq.Parent = Tanchor
+rwq.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+rwq.Position = UDim2.new(0.810945272, 0, 0.129032254, 0)
+rwq.Size = UDim2.new(0, 70, 0, 22)
+
+UICorner_42.CornerRadius = UDim.new(0, 5)
+UICorner_42.Parent = rwq
+
+cxv.Name = "cxv"
+cxv.Parent = rwq
+cxv.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
+cxv.Size = UDim2.new(0, 35, 0, 22)
+
+UICorner_43.CornerRadius = UDim.new(0, 5)
+UICorner_43.Parent = cxv
+
+CreditsTab.Name = "CreditsTab"
+CreditsTab.Parent = AllTabs
+CreditsTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CreditsTab.BackgroundTransparency = 1.000
+CreditsTab.Size = UDim2.new(0, 416, 0, 295)
+CreditsTab.Visible = false
+
+UIListLayout_5.Parent = CreditsTab
+UIListLayout_5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_5.Padding = UDim.new(0, 5)
+
+Credit1.Name = "Credit1"
+Credit1.Parent = CreditsTab
+Credit1.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Credit1.BackgroundTransparency = 1.000
+Credit1.BorderSizePixel = 0
+Credit1.Size = UDim2.new(0, 402, 0, 31)
+Credit1.Font = Enum.Font.SourceSansBold
+Credit1.Text = "GUI - Ep1c#2723"
+Credit1.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credit1.TextSize = 20.000
+Credit1.TextXAlignment = Enum.TextXAlignment.Left
+
+Credit2.Name = "Credit2"
+Credit2.Parent = CreditsTab
+Credit2.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Credit2.BackgroundTransparency = 1.000
+Credit2.BorderSizePixel = 0
+Credit2.Size = UDim2.new(0, 402, 0, 31)
+Credit2.Font = Enum.Font.SourceSansBold
+Credit2.Text = "Scripts - Ep1c#2723"
+Credit2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credit2.TextSize = 20.000
+Credit2.TextXAlignment = Enum.TextXAlignment.Left
+
+Bar.Name = "Bar"
+Bar.Parent = CreditsTab
+Bar.BackgroundColor3 = Color3.fromRGB(170, 170, 170)
+Bar.BorderSizePixel = 0
+Bar.Position = UDim2.new(0.0168269239, 0, 0.244067803, 0)
+Bar.Size = UDim2.new(0, 402, 0, 1)
+Bar.Font = Enum.Font.SourceSans
+Bar.Text = ""
+Bar.TextColor3 = Color3.fromRGB(255, 255, 255)
+Bar.TextSize = 20.000
+Bar.TextXAlignment = Enum.TextXAlignment.Left
+
+Credit3.Name = "Credit3"
+Credit3.Parent = CreditsTab
+Credit3.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Credit3.BackgroundTransparency = 1.000
+Credit3.BorderSizePixel = 0
+Credit3.Size = UDim2.new(0, 402, 0, 31)
+Credit3.Font = Enum.Font.SourceSansBold
+Credit3.Text = "Thanks for using my GUI!"
+Credit3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credit3.TextSize = 20.000
+Credit3.TextXAlignment = Enum.TextXAlignment.Left
+
+HomeTab.Name = "HomeTab"
+HomeTab.Parent = AllTabs
+HomeTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HomeTab.BackgroundTransparency = 1.000
+HomeTab.Size = UDim2.new(0, 416, 0, 295)
+
+UserInfo.Name = "UserInfo"
+UserInfo.Parent = HomeTab
+UserInfo.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+UserInfo.BorderSizePixel = 0
+UserInfo.Position = UDim2.new(0.0260000005, 0, 0.0540000014, 0)
+UserInfo.Size = UDim2.new(0, 394, 0, 100)
+
+UICorner_44.CornerRadius = UDim.new(0, 5)
+UICorner_44.Parent = UserInfo
+
+UserPhoto.Name = "UserPhoto"
+UserPhoto.Parent = UserInfo
+UserPhoto.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UserPhoto.BackgroundTransparency = 1.000
+UserPhoto.BorderSizePixel = 0
+UserPhoto.Size = UDim2.new(0, 100, 0, 100)
+UserPhoto.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+UICorner_45.CornerRadius = UDim.new(0, 5)
+UICorner_45.Parent = UserPhoto
+
+DisplayName.Name = "DisplayName"
+DisplayName.Parent = UserInfo
+DisplayName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DisplayName.BackgroundTransparency = 1.000
+DisplayName.BorderSizePixel = 0
+DisplayName.Position = UDim2.new(0.271573603, 0, 0.0700000003, 0)
+DisplayName.Size = UDim2.new(0, 280, 0, 30)
+DisplayName.Font = Enum.Font.SourceSansBold
+DisplayName.Text = "DisplayName"
+DisplayName.TextColor3 = Color3.fromRGB(255, 255, 255)
+DisplayName.TextScaled = true
+DisplayName.TextSize = 20.000
+DisplayName.TextWrapped = true
+DisplayName.TextXAlignment = Enum.TextXAlignment.Left
+
+UserName.Name = "UserName"
+UserName.Parent = UserInfo
+UserName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UserName.BackgroundTransparency = 1.000
+UserName.BorderSizePixel = 0
+UserName.Position = UDim2.new(0.271573603, 0, 0.400000006, 0)
+UserName.Size = UDim2.new(0, 280, 0, 20)
+UserName.Font = Enum.Font.SourceSansLight
+UserName.Text = "UserName"
+UserName.TextColor3 = Color3.fromRGB(255, 255, 255)
+UserName.TextScaled = true
+UserName.TextSize = 1.000
+UserName.TextWrapped = true
+UserName.TextXAlignment = Enum.TextXAlignment.Left
+
+ServerTimer.Name = "ServerTimer"
+ServerTimer.Parent = HomeTab
+ServerTimer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ServerTimer.BackgroundTransparency = 1.000
+ServerTimer.Position = UDim2.new(0.024038462, 0, 0.413559318, 0)
+ServerTimer.Size = UDim2.new(0, 394, 0, 25)
+ServerTimer.Font = Enum.Font.SourceSansBold
+ServerTimer.Text = "Timer Here!"
+ServerTimer.TextColor3 = Color3.fromRGB(255, 255, 255)
+ServerTimer.TextSize = 20.000
+ServerTimer.TextXAlignment = Enum.TextXAlignment.Left
+
+local function DDFMD_fake_script() -- MiscTabBtn.LocalScript 
+	local script = Instance.new('LocalScript', MiscTabBtn)
+
+	local sb = script.Parent.Parent -- SideBar
+	local at = sb.Parent.AllTabs  -- AllTabs
+	
+	local CreditsTab = at.CreditsTab
+	local HomeTab = at.HomeTab
+	local LocalPlayerTab = at.LocalPlayerTab
+	local MiscTab = at.MiscTab
+	local TeleportsTab = at.TeleportsTab
+	local UtilitiesTab = at.UtilitiesTab
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		HomeTab.Visible = false
+		LocalPlayerTab.Visible = false
+		CreditsTab.Visible = false
+		TeleportsTab.Visible = false
+		UtilitiesTab.Visible = false
+		wait(.3)
+		MiscTab.Visible = true
+	end)
+end
+coroutine.wrap(DDFMD_fake_script)()
+local function ADSBKL_fake_script() -- UtilitiesTabBtn.LocalScript 
+	local script = Instance.new('LocalScript', UtilitiesTabBtn)
+
+	local sb = script.Parent.Parent -- SideBar
+	local at = sb.Parent.AllTabs  -- AllTabs
+	
+	local CreditsTab = at.CreditsTab
+	local HomeTab = at.HomeTab
+	local LocalPlayerTab = at.LocalPlayerTab
+	local MiscTab = at.MiscTab
+	local TeleportsTab = at.TeleportsTab
+	local UtilitiesTab = at.UtilitiesTab
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		HomeTab.Visible = false
+		LocalPlayerTab.Visible = false
+		MiscTab.Visible = false
+		TeleportsTab.Visible = false
+		CreditsTab.Visible = false
+		wait(.3)
+		UtilitiesTab.Visible = true
+	end)
+end
+coroutine.wrap(ADSBKL_fake_script)()
+local function XZITH_fake_script() -- TeleportsTabBtn.LocalScript 
+	local script = Instance.new('LocalScript', TeleportsTabBtn)
+
+	local sb = script.Parent.Parent -- SideBar
+	local at = sb.Parent.AllTabs  -- AllTabs
+	
+	local CreditsTab = at.CreditsTab
+	local HomeTab = at.HomeTab
+	local LocalPlayerTab = at.LocalPlayerTab
+	local MiscTab = at.MiscTab
+	local TeleportsTab = at.TeleportsTab
+	local UtilitiesTab = at.UtilitiesTab
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		HomeTab.Visible = false
+		LocalPlayerTab.Visible = false
+		MiscTab.Visible = false
+		CreditsTab.Visible = false
+		UtilitiesTab.Visible = false
+		wait(.3)
+		TeleportsTab.Visible = true
+	end)
+end
+coroutine.wrap(XZITH_fake_script)()
+local function DECBDIW_fake_script() -- LocalPlayerTabBtn.LocalScript 
+	local script = Instance.new('LocalScript', LocalPlayerTabBtn)
+
+	local sb = script.Parent.Parent -- SideBar
+	local at = sb.Parent.AllTabs  -- AllTabs
+	
+	local CreditsTab = at.CreditsTab
+	local HomeTab = at.HomeTab
+	local LocalPlayerTab = at.LocalPlayerTab
+	local MiscTab = at.MiscTab
+	local TeleportsTab = at.TeleportsTab
+	local UtilitiesTab = at.UtilitiesTab
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		HomeTab.Visible = false
+		CreditsTab.Visible = false
+		MiscTab.Visible = false
+		TeleportsTab.Visible = false
+		UtilitiesTab.Visible = false
+		wait(.3)
+		LocalPlayerTab.Visible = true
+	end)
+end
+coroutine.wrap(DECBDIW_fake_script)()
+local function JZNFODF_fake_script() -- CreditsTabBtn.LocalScript 
+	local script = Instance.new('LocalScript', CreditsTabBtn)
+
+	local sb = script.Parent.Parent -- SideBar
+	local at = sb.Parent.AllTabs  -- AllTabs
+	
+	local CreditsTab = at.CreditsTab
+	local HomeTab = at.HomeTab
+	local LocalPlayerTab = at.LocalPlayerTab
+	local MiscTab = at.MiscTab
+	local TeleportsTab = at.TeleportsTab
+	local UtilitiesTab = at.UtilitiesTab
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		HomeTab.Visible = false
+		LocalPlayerTab.Visible = false
+		MiscTab.Visible = false
+		TeleportsTab.Visible = false
+		UtilitiesTab.Visible = false
+		wait(.3)
+		CreditsTab.Visible = true
+	end)
+end
+coroutine.wrap(JZNFODF_fake_script)()
+local function INXFMQF_fake_script() -- SideBar.LocalScript 
+	local script = Instance.new('LocalScript', SideBar)
+
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.2)
+	local ti2 = TweenInfo.new(.08)
+	local enter = {} enter.TextTransparency = .5
+	local leave = {} leave.TextTransparency = 0
+	local down = {} down.TextSize = 15
+	local up = {} up.TextSize = 25
+	local bruh = TweenInfo.new(.3)
+	local clicked = {} clicked.BackgroundTransparency = 0 local back = {} back.BackgroundTransparency = 1
+	local tabchanger = script.Parent.Parent.AllTabs.TabChangingTransparent
+	local gradient = tabchanger.UIGradient gr = {} gr.Rotation = 360 gr2 = {} gr2.Rotation = 0
+	for i,v in pairs(script.Parent:GetDescendants()) do
+		if v:IsA'TextButton' then
+			v.MouseEnter:Connect(function()
+				ts:Create(v,ti,enter):Play()
+			end)
+			v.MouseLeave:Connect(function()
+				ts:Create(v,ti,leave):Play()
+			end)
+			v.MouseButton1Down:Connect(function()
+				ts:Create(v,ti2,down):Play()
+			end)
+			v.MouseButton1Up:Connect(function()
+				ts:Create(v,ti2,up):Play()
+			end)
+			v.MouseButton1Click:Connect(function()
+				ts:Create(tabchanger,bruh,clicked):Play()
+				ts:Create(gradient,bruh,gr):Play()
+				wait(.3)
+				ts:Create(tabchanger,bruh,back):Play()
+				ts:Create(gradient,bruh,gr2):Play()
+				wait(.3)
+				gradient.Rotation = 0
+			end)
+		end
+	end
+end
+coroutine.wrap(INXFMQF_fake_script)()
+local function DZDVTX_fake_script() -- HomeTabBtn.LocalScript 
+	local script = Instance.new('LocalScript', HomeTabBtn)
+
+	local sb = script.Parent.Parent -- SideBar
+	local at = sb.Parent.AllTabs  -- AllTabs
+	
+	local CreditsTab = at.CreditsTab
+	local HomeTab = at.HomeTab
+	local LocalPlayerTab = at.LocalPlayerTab
+	local MiscTab = at.MiscTab
+	local TeleportsTab = at.TeleportsTab
+	local UtilitiesTab = at.UtilitiesTab
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		CreditsTab.Visible = false
+		LocalPlayerTab.Visible = false
+		MiscTab.Visible = false
+		TeleportsTab.Visible = false
+		UtilitiesTab.Visible = false
+		wait(.3)
+		HomeTab.Visible = true
+	end)
+end
+coroutine.wrap(DZDVTX_fake_script)()
+local function QUFYCXM_fake_script() -- CloseGUI.LocalScript 
+	local script = Instance.new('LocalScript', CloseGUI)
+
+	local c = script.Parent
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.1)
+	
+	local enter = {} enter.ImageTransparency = .5
+	local leave = {} leave.ImageTransparency = 0
+	
+	local entered = ts:Create(c,ti,enter)
+	local up = ts:Create(c,ti,leave)
+	
+	c.MouseEnter:Connect(function()
+		entered:Play()
+	end)
+	
+	c.MouseLeave:Connect(function()
+		up:Play()
+	end)
+	
+	c.MouseButton1Click:Connect(function()
+		c.Parent.Parent:TweenSize(UDim2.new(0,0,0,0),nil,nil,.2,true)
+		wait(.3)
+		c.Parent.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(QUFYCXM_fake_script)()
+local function JEDM_fake_script() -- TPToIsland.LocalScript 
+	local script = Instance.new('LocalScript', TPToIsland)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-117, 47, 5)
+	end)
+end
+coroutine.wrap(JEDM_fake_script)()
+local function ZNJPBAJ_fake_script() -- TPToLobby.LocalScript 
+	local script = Instance.new('LocalScript', TPToLobby)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-243, 194, 331)
+	end)
+end
+coroutine.wrap(ZNJPBAJ_fake_script)()
+local function VOAU_fake_script() -- TPToChina.LocalScript 
+	local script = Instance.new('LocalScript', TPToChina)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		Notify("Teleporting to Chinese Server...",2)
+		wait(2)
+		
+		local tp = game:GetService("TeleportService")
+		local lp = game.Players.LocalPlayer
+		
+		tp:Teleport(3696971654, lp)
+	end)
+end
+coroutine.wrap(VOAU_fake_script)()
+local function FCDAQ_fake_script() -- TP.LocalScript 
+	local script = Instance.new('LocalScript', TP)
+
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	local lp = game.Players.LocalPlayer
+	local function plr(String)
+		local Found = {}
+		local strl = String:lower()
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name:lower():sub(1, #String) == String:lower() then
+				table.insert(Found,v)
+			end
+		end
+        return Found
+	end
+	
+	
+	local textbox = script.Parent
+	
+	local function focusLost(enterPressed)
+		if enterPressed then
+			local Target = plr(textbox.Text)
+			if Target[1] then
+				Target = Target[1]
+					lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+			else
+				Notify("Invalid Player!",5)
+			end
+		end
+	end
+	
+	script.Parent.FocusLost:Connect(focusLost)
+end
+coroutine.wrap(FCDAQ_fake_script)()
+local function NXKHRVR_fake_script() -- TP.LocalScript 
+	local script = Instance.new('LocalScript', TP)
+
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	local lp = game.Players.LocalPlayer
+	local function plr(String)
+		local Found = {}
+		local strl = String:lower()
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.DisplayName:lower():sub(1, #String) == String:lower() then
+				table.insert(Found,v)
+			end
+		end
+	end
+	
+	
+	local textbox = script.Parent
+	-- original size : 0,70,0,22
+	-- original pos : 0.808,0,0.161,0
+	
+	-- Clicked size : 0,223,0,22
+	-- Clicked pos : 0.428,0,0.161,0
+	
+	textbox.MouseLeave:Connect(function()
+		textbox:TweenSizeAndPosition(UDim2.new(0,70,0,22),UDim2.new(0.808,0,0.161,0),nil,nil,.4,true)
+	end)
+	
+	textbox.MouseEnter:Connect(function()
+		textbox:TweenSizeAndPosition(UDim2.new(0,223,0,22),UDim2.new(0.428,0,0.161,0),nil,nil,.4,true)
+	end)
+	
+	local function focusLost(enterPressed)
+		if enterPressed then
+			local Target = plr(textbox.Text)
+			if Target[1] then
+				Target = Target[1]
+				lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+			else
+				Notify("Invalid Player!",5)
+			end
+		end
+	end
+	
+	script.Parent.FocusLost:Connect(focusLost)
+end
+coroutine.wrap(NXKHRVR_fake_script)()
+local function HWOT_fake_script() -- RemoveFallDamage.LocalScript 
+	local script = Instance.new('LocalScript', RemoveFallDamage)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if game.Players.LocalPlayer.Character:FindFirstChild'FallDamageScript' then
+			game.Players.LocalPlayer.Character.FallDamageScript:Destroy()
+		else
+			Notify("Already Removed Fall Damage!",4)
+		end
+	end)
+end
+coroutine.wrap(HWOT_fake_script)()
+local function DHPL_fake_script() -- StealBalloon.LocalScript 
+	local script = Instance.new('LocalScript', StealBalloon)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if game.Workspace:FindFirstChild("GreenBalloon", true) then
+			balloonClone = game.Workspace:FindFirstChild("GreenBalloon", true):Clone()
+			balloonClone.Parent = game:GetService("Players").LocalPlayer.Backpack
+			Notify("Balloon Successfully Stolen!",3)
+		else 
+			Notify("Someone needs to hold a balloon in the server!",5)
+		end
+	end)
+end
+coroutine.wrap(DHPL_fake_script)()
+local function IKJUBU_fake_script() -- NextDisaster.LocalScript 
+	local script = Instance.new('LocalScript', NextDisaster)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		Notify("The next disaster: "..game.Players.LocalPlayer.Character.SurvivalTag.Value,5)
+	end)
+end
+coroutine.wrap(IKJUBU_fake_script)()
+local function OGGBMIC_fake_script() -- ToggleVoteMap.LocalScript 
+	local script = Instance.new('LocalScript', ToggleVoteMap)
+
+	local ToggleSw = script.Parent.tsssss1.tsssssss
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	votemenu = game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage
+	toggle = false
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			toggleOn:Play()
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			votemenu.Visible = true
+		else
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+			votemenu.Visible = false
+		end
+	end)
+end
+coroutine.wrap(OGGBMIC_fake_script)()
+local function IUUVUM_fake_script() -- ToggleSpamSounds.LocalScript 
+	local script = Instance.new('LocalScript', ToggleSpamSounds)
+
+	local ToggleSw = script.Parent.zero.twoo
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	
+	toggle = false
+	loop = false
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			toggleOn:Play()
+            loop = true
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			while loop do
+				wait()
+				for i,v in pairs(game.Workspace:GetDescendants()) do
+					if v:IsA'Sound' then
+						v:Play()
+						v.Volume = 10
+					end
+				end
+			end
+		else
+			for i,v in pairs(game.Workspace:GetDescendants()) do
+				if v:IsA'Sound' then
+          wait(.01)
+					v:Stop()
+					v.Volume = 1
+				end
+			end
+            loop = false
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+		end
+	end)
+end
+coroutine.wrap(IUUVUM_fake_script)()
+local function XBVG_fake_script() -- ToggleAutofarm.LocalScript 
+	local script = Instance.new('LocalScript', ToggleAutofarm)
+
+	local ToggleSw = script.Parent.fa.fa2
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	
+	toggle = false
+	local SafeZoneAutofarmPart = Instance.new("Part")
+	
+	SafeZoneAutofarmPart.Position = Vector3.new(1000, 1000, 1000)
+	SafeZoneAutofarmPart.Parent = game.Workspace
+	SafeZoneAutofarmPart.Anchored = true
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			toggleOn:Play()
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			while toggle do
+				wait()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(1000, 1000, 1000)
+			end
+		else
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+		end
+	end)
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == true then
+			local LastPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+			wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Position = LastPos
+		end
+	end)
+end
+coroutine.wrap(XBVG_fake_script)()
+local function XNXK_fake_script() -- AutoDisaster.LocalScript 
+	local script = Instance.new('LocalScript', AutoDisaster)
+
+	local ToggleSw = script.Parent.ah.llozz
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	toggle = false
+	lol = false
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			lol = true
+			toggleOn:Play()
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			game.Players.LocalPlayer.Character.ChildAdded:Connect(function(object)
+				if object.Name == 'SurvivalTag' then
+					if lol == true then
+						Notify("Auto Disaster: "..game.Players.LocalPlayer.Character.SurvivalTag.Value,5)
+					else
+						return
+					end
+				end
+			end)
+		else
+			lol = false
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+		end
+	end)
+end
+coroutine.wrap(XNXK_fake_script)()
+local function LNFQHV_fake_script() -- RemoveFDRespawn.LocalScript 
+	local script = Instance.new('LocalScript', RemoveFDRespawn)
+
+	local ToggleSw = script.Parent.dam.dammm
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	toggle = false
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			toggleOn:Play()
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			game.Players.LocalPlayer.CharacterAdded:Connect(function()
+					if toggle == true then
+                        wait(.1)
+						game.Players.LocalPlayer.Character.FallDamageScript:Destroy()
+					else
+						return
+					end
+					
+			end)
+		else
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+		end
+	end)
+end
+coroutine.wrap(LNFQHV_fake_script)()
+local function AJOBEEG_fake_script() -- RmBlizzard.LocalScript 
+	local script = Instance.new('LocalScript', RmBlizzard)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if game.Players.LocalPlayer.PlayerGui:FindFirstChild'BlizzardGui' then
+			game.Players.LocalPlayer.PlayerGui.BlizzardGui:Destroy()
+		else
+			Notify("Already Removed!",3)
+		end
+	end)
+end
+coroutine.wrap(AJOBEEG_fake_script)()
+local function GRAVXT_fake_script() -- RmSandStorm.LocalScript 
+	local script = Instance.new('LocalScript', RmSandStorm)
+
+	local ts = game:GetService('TweenService')
+	local ti = TweenInfo.new(.09)
+	local down = {} down.TextSize = 10
+	local up = {} up.TextSize = 20
+	
+	local Notifications = Instance.new("ScreenGui")
+	local Outputs = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	Notifications.Name = "Notifications"
+	Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	Notifications.ResetOnSpawn = false
+	
+	Outputs.Name = "Outputs"
+	Outputs.Parent = Notifications
+	Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+	Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Outputs.BackgroundTransparency = 1.000
+	Outputs.BorderSizePixel = 0
+	Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+	Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+	UIListLayout.Parent = Outputs
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+	UIListLayout.Padding = UDim.new(0, 8)
+	
+	if not game.Players.LocalPlayer.PlayerGui.Notifications:FindFirstChild'Notifications' then
+		local Notifications = Instance.new("ScreenGui")
+		local Outputs = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+	
+		Notifications.Name = "Notifications"
+		Notifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+		Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		Notifications.ResetOnSpawn = false
+	
+		Outputs.Name = "Outputs"
+		Outputs.Parent = Notifications
+		Outputs.AnchorPoint = Vector2.new(0.5, 0.5)
+		Outputs.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Outputs.BackgroundTransparency = 1.000
+		Outputs.BorderSizePixel = 0
+		Outputs.Position = UDim2.new(0.500987172, 0, 0.500237167, 0)
+		Outputs.Size = UDim2.new(0, 370, 0, 526)
+	
+		UIListLayout.Parent = Outputs
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.Padding = UDim.new(0, 8)
+	end
+	
+	function Notify(Text,Timerr)
+		local NotificationFrame = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextExample = Instance.new("TextLabel")
+		local Timer = Instance.new("TextLabel")
+		local UICorner_2 = Instance.new("UICorner")
+		local Btn = Instance.new("TextButton")
+	
+		NotificationFrame.Name = "NotificationFrame"
+		NotificationFrame.Parent = game.Players.LocalPlayer.PlayerGui.Notifications.Outputs
+		NotificationFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+		NotificationFrame.Position = UDim2.new(0, 0, 0.674904943, 0)
+		NotificationFrame.Size = UDim2.new(0, 370, 0, 30)
+		NotificationFrame.BackgroundTransparency = 1
+	
+		UICorner.CornerRadius = UDim.new(0, 5)
+		UICorner.Parent = NotificationFrame
+	
+		TextExample.Name = "TextExample"
+		TextExample.Parent = NotificationFrame
+		TextExample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.BackgroundTransparency = 1.000
+		TextExample.Size = UDim2.new(0, 370, 0, 30)
+		TextExample.Font = Enum.Font.Nunito
+		TextExample.Text = Text
+		TextExample.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextExample.TextScaled = true
+		TextExample.TextSize = 14.000
+		TextExample.TextWrapped = true
+		TextExample.TextTransparency = 1
+	
+		Timer.Name = "Timer"
+		Timer.Parent = NotificationFrame
+		Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Timer.Position = UDim2.new(0, 0, 1, 0)
+		Timer.Size = UDim2.new(0, 370, 0, 5)
+		Timer.Font = Enum.Font.SourceSans
+		Timer.Text = ""
+		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Timer.TextSize = 14.000
+		Timer.BackgroundTransparency = 1
+	
+		UICorner_2.CornerRadius = UDim.new(0, 5)
+		UICorner_2.Parent = Timer
+	
+		Btn.Name = "Btn"
+		Btn.Parent = NotificationFrame
+		Btn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Btn.BackgroundTransparency = 1.000
+		Btn.Size = UDim2.new(0, 370, 0, 35)
+		Btn.Font = Enum.Font.SourceSans
+		Btn.Text = ""
+		Btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Btn.TextSize = 14.000
+		local ts = game:GetService("TweenService")
+		local ti = TweenInfo.new(.3)
+		local timerinfo = TweenInfo.new(Timerr) local timerrrrrrrr = {} timerrrrrrrr.Size =  UDim2.new(0, 0, 0, 5)
+	
+		local start = {} start.BackgroundTransparency = 0 local starttext = {} starttext.TextTransparency = 0
+		local ending = {} ending.BackgroundTransparency = 1 local endingtext = {} endingtext.TextTransparency = 1
+	
+		ts:Create(NotificationFrame,ti,start):Play() ts:Create(TextExample,ti,starttext):Play() ts:Create(Timer,ti,start):Play()
+		wait(.1)
+		local timertween = ts:Create(Timer,timerinfo,timerrrrrrrr)
+		timertween:Play()
+		Btn.MouseButton1Click:Connect(function()
+			timertween:Pause()
+			ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+			wait(.4)
+			NotificationFrame:Destroy()
+		end)
+		wait(Timerr)
+		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+	end
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		ts:Create(script.Parent,ti,down):Play()
+	end)
+	
+	script.Parent.MouseButton1Up:Connect(function()
+		ts:Create(script.Parent,ti,up):Play()
+	end)
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if game.Players.LocalPlayer.PlayerGui:FindFirstChild'SandStormGui' then
+			game.Players.LocalPlayer.PlayerGui.SandStormGui:Destroy()
+		else
+			Notify("Already Removed!",5)
+		end
+	end)
+end
+coroutine.wrap(GRAVXT_fake_script)()
+local function JOSVA_fake_script() -- arbze.LocalScript 
+	local script = Instance.new('LocalScript', arbze)
+
+	local ToggleSw = script.Parent.ToggleFrame12.ToggleSwitch21
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	toggle = false
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			toggleOn:Play()
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			game.Players.LocalPlayer.PlayerGui.ChildAdded:Connect(function(noob)
+				if noob.Name == "BlizzardGui" then
+					if toggle == true then
+						game.Players.LocalPlayer.PlayerGui.BlizzardGui:Destroy()
+					else
+						return
+					end
+				end
+			end)
+		else
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+		end
+	end)
+end
+coroutine.wrap(JOSVA_fake_script)()
+local function ZXPW_fake_script() -- arsse.LocalScript 
+	local script = Instance.new('LocalScript', arsse)
+
+	local ToggleSw = script.Parent.tfff.some
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	toggle = false
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			toggleOn:Play()
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			game.Players.LocalPlayer.PlayerGui.ChildAdded:Connect(function(noob)
+				if noob.Name == "SandStormGui" then
+					if toggle == true then
+						game.Players.LocalPlayer.PlayerGui.SandStormGui:Destroy()
+					else
+						return
+					end
+				end
+			end)
+		else
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+		end
+	end)
+end
+coroutine.wrap(ZXPW_fake_script)()
+local function ACLR_fake_script() -- SetWs.LocalScript 
+	local script = Instance.new('LocalScript', SetWs)
+
+	local textbox = script.Parent
+	-- original size : 0,70,0,22
+	-- original pos : 0.808,0,0.161,0
+	
+	-- Clicked size : 0,223,0,22
+	-- Clicked pos : 0.428,0,0.161,0
+	textbox.MouseLeave:Connect(function()
+		textbox:TweenSizeAndPosition(UDim2.new(0,70,0,22),UDim2.new(0.808,0,0.161,0),nil,nil,.4,true)
+	end)
+	textbox.MouseEnter:Connect(function()
+		textbox:TweenSizeAndPosition(UDim2.new(0,223,0,22),UDim2.new(0.428,0,0.161,0),nil,nil,.4,true)
+	end)
+	
+	local function focusLost(enterPressed)
+		if enterPressed then
+			if textbox.Text == "" then
+				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
+			else
+				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = textbox.Text
+			end
+		end
+	end
+	
+	script.Parent.FocusLost:Connect(focusLost)
+end
+coroutine.wrap(ACLR_fake_script)()
+local function KUQB_fake_script() -- SetJp.LocalScript 
+	local script = Instance.new('LocalScript', SetJp)
+
+	local textbox = script.Parent
+	-- original size : 0,70,0,22
+	-- original pos : 0.808,0,0.161,0
+	
+	-- Clicked size : 0,223,0,22
+	-- Clicked pos : 0.428,0,0.161,0
+	
+	textbox.MouseLeave:Connect(function()
+		textbox:TweenSizeAndPosition(UDim2.new(0,70,0,22),UDim2.new(0.808,0,0.161,0),nil,nil,.4,true)
+	end)
+	
+	textbox.MouseEnter:Connect(function()
+		textbox:TweenSizeAndPosition(UDim2.new(0,223,0,22),UDim2.new(0.428,0,0.161,0),nil,nil,.4,true)
+	end)
+	
+	local function focusLost(enterPressed)
+		if enterPressed then
+			if textbox.Text == "" then
+				game.Players.LocalPlayer.Character.Humanoid.JumpPower = game.Players.LocalPlayer.Character.Humanoid.JumpPower
+			else
+				game.Players.LocalPlayer.Character.Humanoid.JumpPower = textbox.Text
+			end
+		end
+	end
+	
+	script.Parent.FocusLost:Connect(focusLost)
+end
+coroutine.wrap(KUQB_fake_script)()
+local function CFNVN_fake_script() -- Tanchor.LocalScript 
+	local script = Instance.new('LocalScript', Tanchor)
+
+	local ToggleSw = script.Parent.rwq.cxv
+	local ts = game:GetService("TweenService")
+	local ti = TweenInfo.new(.5)
+	local red = {} red.BackgroundColor3 = Color3.fromRGB(255,70,70) local green = {} green.BackgroundColor3 = Color3.fromRGB(70,255,70)
+	local toggleOff = ts:Create(ToggleSw,ti,red)
+	local toggleOn = ts:Create(ToggleSw,ti,green)
+	toggle = false
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if toggle == false then toggle = true else toggle = false end
+		if toggle == true then
+			toggleOn:Play()
+			toggleOff:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+		else
+			toggleOff:Play()
+			toggleOn:Pause()
+			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+		end
+	end)
+end
+coroutine.wrap(CFNVN_fake_script)()
+local function GDLHK_fake_script() -- UserPhoto.LocalScript 
+	local script = Instance.new('LocalScript', UserPhoto)
+
+	script.Parent.Image = game.Players:GetUserThumbnailAsync(game.Players.LocalPlayer.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size100x100)
+end
+coroutine.wrap(GDLHK_fake_script)()
+local function TJHCI_fake_script() -- UserInfo.LocalScript 
+	local script = Instance.new('LocalScript', UserInfo)
+
+	local DisplayName = script.Parent.DisplayName
+	local UserName = script.Parent.UserName
+	
+	DisplayName.Text = "Welcome, "..game.Players.LocalPlayer.DisplayName.."!"
+	UserName.Text = "@"..game.Players.LocalPlayer.Name
+end
+coroutine.wrap(TJHCI_fake_script)()
+local function QLGDKGT_fake_script() -- UserInfo.LocalScript 
+	local script = Instance.new('LocalScript', UserInfo)
+
+	local u = script.Parent
+	u.MouseEnter:Connect(function()
+		u:TweenPosition(UDim2.new(0.026, 0,0.03, 0),nil,nil,.2,true)
+	end)
+	u.MouseLeave:Connect(function()
+		u:TweenPosition(UDim2.new(0.026, 0,0.054, 0),nil,nil,.2,true)
+	end)
+end
+coroutine.wrap(QLGDKGT_fake_script)()
+local function NAORYK_fake_script() -- ServerTimer.LocalScript 
+	local script = Instance.new('LocalScript', ServerTimer)
+
+	Hours, Minutes, Seconds = 0, 0, 0
+	
+	function OnServerInvoke(player)
+		return Hours, Minutes, Seconds 
+	end
+	
+	while wait(1) do
+		if( Seconds + 1 >= 60 )then
+			Seconds = 0
+			if( Minutes + 1 >= 60 )then
+				Minutes = 0
+				Hours = Hours + 1
+			else
+				Minutes = Minutes + 1
+			end
+		else
+			Seconds = Seconds + 1
+		end
+	
+		script.Parent.Text = "Join Time -  "..Hours..":"..Minutes..":"..Seconds
+	end
+end
+coroutine.wrap(NAORYK_fake_script)()
+local function SYVQBEO_fake_script() -- Main.Drag 
+	local script = Instance.new('LocalScript', Main)
+
+	local UserInputService = game:GetService("UserInputService")
+	local runService = (game:GetService("RunService"));
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	function Lerp(a, b, m)
+		return a + (b - a) * m
+	end;
+	
+	local lastMousePos
+	local lastGoalPos
+	local DRAG_SPEED = (7);
+	function Update(dt)
+		if not (startPos) then return end;
+		if not (dragging) and (lastGoalPos) then
+			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
+			return 
+		end;
+	
+		local delta = (lastMousePos - UserInputService:GetMouseLocation())
+		local xGoal = (startPos.X.Offset - delta.X);
+		local yGoal = (startPos.Y.Offset - delta.Y);
+		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
+		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+	end;
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			lastMousePos = UserInputService:GetMouseLocation()
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	runService.Heartbeat:Connect(Update)
+end
+coroutine.wrap(SYVQBEO_fake_script)() else Notify("Already Executed Script!",5) end
