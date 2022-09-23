@@ -2346,7 +2346,7 @@ local function XBVG_fake_script() -- ToggleAutofarm.LocalScript
 			wait(.1)
 			while toggle do
 				wait(5)
-				game:GetService("Players").LocalPlayer.Character:MoveTo(game:GetService("Workspace").TowerPart.Position)
+				game:GetService("Players").LocalPlayer.Character.Position = game:GetService("Workspace").TowerPart.Position
 			end
 		else
 			toggleOff:Play()
@@ -2358,8 +2358,8 @@ local function XBVG_fake_script() -- ToggleAutofarm.LocalScript
 	script.Parent.MouseButton1Click:Connect(function()
 		if toggle == true then
 			local LastPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-			wait()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.Position = LastPos
+			wait(.01)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(LastPos)
 		end
 	end)
 end
