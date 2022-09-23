@@ -2318,6 +2318,13 @@ local function IUUVUM_fake_script() -- ToggleSpamSounds.LocalScript
 					v.Volume = 1
 				end
 			end
+			wait(.01)
+			for i,v in pairs(game.Workspace:GetDescendants()) do
+				if v:IsA'Sound' then
+					v:Stop()
+					v.Volume = 1
+				end
+			end
 			toggleOff:Play()
 			toggleOn:Pause()
 			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
@@ -2342,17 +2349,18 @@ local function XBVG_fake_script() -- ToggleAutofarm.LocalScript
 			toggleOn:Play()
 			toggleOff:Pause()
 			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
-			local LastPos = game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.Position
+			local LastPos = game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame
 			wait(.1)
 			while toggle do
 				wait(5)
-				game:GetService("Players").LocalPlayer.Character.Position = game:GetService("Workspace").TowerPart.Position
+				game:GetService("Players").LocalPlayer.Character.Position = game:GetService("Workspace").Tower.TowerPart.Position
 			end
 		else
 			toggleOff:Play()
 			toggleOn:Pause()
 			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
-			game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.Position = Lastpos
+			wait(.1)
+			game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(LastPos)
 		end
 	end)
 	script.Parent.MouseButton1Click:Connect(function()
