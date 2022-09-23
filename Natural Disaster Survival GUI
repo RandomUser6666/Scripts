@@ -1757,13 +1757,14 @@ local function NXKHRVR_fake_script() -- TP.LocalScript
 	
 	local lp = game.Players.LocalPlayer
 	local function plr(String)
-		local Found = {}
+		local FoundHaha = {}
 		local strl = String:lower()
 		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
 			if v.DisplayName:lower():sub(1, #String) == String:lower() then
-				table.insert(Found,v)
+				table.insert(FoundHaha,v)
 			end
 		end
+		return FoundHaha
 	end
 	
 	
