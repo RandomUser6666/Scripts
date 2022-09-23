@@ -89,6 +89,7 @@
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -121,6 +122,8 @@
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 end
 
 if not game.CoreGui:FindFirstChild'NDS' then
@@ -1404,6 +1407,7 @@ local function VOAU_fake_script() -- TPToChina.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -1436,6 +1440,8 @@ local function VOAU_fake_script() -- TPToChina.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	script.Parent.MouseButton1Down:Connect(function()
@@ -1551,6 +1557,7 @@ local function FCDAQ_fake_script() -- TP.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -1583,6 +1590,8 @@ local function FCDAQ_fake_script() -- TP.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	local lp = game.Players.LocalPlayer
@@ -1709,6 +1718,7 @@ local function NXKHRVR_fake_script() -- TP.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -1741,6 +1751,8 @@ local function NXKHRVR_fake_script() -- TP.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	local lp = game.Players.LocalPlayer
@@ -1892,6 +1904,7 @@ local function HWOT_fake_script() -- RemoveFallDamage.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -1924,6 +1937,8 @@ local function HWOT_fake_script() -- RemoveFallDamage.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	script.Parent.MouseButton1Click:Connect(function()
@@ -2042,6 +2057,7 @@ local function DHPL_fake_script() -- StealBalloon.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -2074,6 +2090,8 @@ local function DHPL_fake_script() -- StealBalloon.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	script.Parent.MouseButton1Click:Connect(function()
@@ -2194,6 +2212,7 @@ local function IKJUBU_fake_script() -- NextDisaster.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -2226,6 +2245,8 @@ local function IKJUBU_fake_script() -- NextDisaster.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	script.Parent.MouseButton1Click:Connect(function()
@@ -2277,7 +2298,7 @@ local function IUUVUM_fake_script() -- ToggleSpamSounds.LocalScript
 		if toggle == false then toggle = true else toggle = false end
 		if toggle == true then
 			toggleOn:Play()
-            loop = true
+            		loop = true
 			toggleOff:Pause()
 			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
 			while loop do
@@ -2290,14 +2311,13 @@ local function IUUVUM_fake_script() -- ToggleSpamSounds.LocalScript
 				end
 			end
 		else
+		 	loop = false
 			for i,v in pairs(game.Workspace:GetDescendants()) do
 				if v:IsA'Sound' then
-          wait(.01)
 					v:Stop()
 					v.Volume = 1
 				end
 			end
-            loop = false
 			toggleOff:Play()
 			toggleOn:Pause()
 			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
@@ -2316,25 +2336,23 @@ local function XBVG_fake_script() -- ToggleAutofarm.LocalScript
 	local toggleOn = ts:Create(ToggleSw,ti,green)
 	
 	toggle = false
-	local SafeZoneAutofarmPart = Instance.new("Part")
-	
-	SafeZoneAutofarmPart.Position = Vector3.new(1000, 1000, 1000)
-	SafeZoneAutofarmPart.Parent = game.Workspace
-	SafeZoneAutofarmPart.Anchored = true
 	script.Parent.MouseButton1Click:Connect(function()
 		if toggle == false then toggle = true else toggle = false end
 		if toggle == true then
 			toggleOn:Play()
 			toggleOff:Pause()
 			ToggleSw:TweenPosition(UDim2.new(0.5,0,0,0),nil,nil,.5,true)
+			local LastPos = game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.Position
+			wait(.1)
 			while toggle do
-				wait()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(1000, 1000, 1000)
+				wait(5)
+				game:GetService("Players").LocalPlayer.Character:MoveTo(game:GetService("Workspace").TowerPart.Position)
 			end
 		else
 			toggleOff:Play()
 			toggleOn:Pause()
 			ToggleSw:TweenPosition(UDim2.new(0,0,0,0),nil,nil,.5,true)
+			game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.Position = Lastpos
 		end
 	end)
 	script.Parent.MouseButton1Click:Connect(function()
@@ -2447,6 +2465,7 @@ local function XNXK_fake_script() -- AutoDisaster.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -2479,6 +2498,8 @@ local function XNXK_fake_script() -- AutoDisaster.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	toggle = false
@@ -2609,6 +2630,7 @@ local function LNFQHV_fake_script() -- RemoveFDRespawn.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -2641,6 +2663,8 @@ local function LNFQHV_fake_script() -- RemoveFDRespawn.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	toggle = false
@@ -2767,6 +2791,7 @@ local function AJOBEEG_fake_script() -- RmBlizzard.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -2799,6 +2824,8 @@ local function AJOBEEG_fake_script() -- RmBlizzard.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	script.Parent.MouseButton1Down:Connect(function()
@@ -2917,6 +2944,7 @@ local function GRAVXT_fake_script() -- RmSandStorm.LocalScript
 		Timer.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Timer.TextSize = 14.000
 		Timer.BackgroundTransparency = 1
+		Timer.BorderSizePixel = 0
 	
 		UICorner_2.CornerRadius = UDim.new(0, 5)
 		UICorner_2.Parent = Timer
@@ -2949,6 +2977,8 @@ local function GRAVXT_fake_script() -- RmSandStorm.LocalScript
 		end)
 		wait(Timerr)
 		ts:Create(NotificationFrame,ti,ending):Play() ts:Create(TextExample,ti,endingtext):Play() ts:Create(Timer,ti,ending):Play()
+		wait(.3)
+		NotificationFrame:Destroy()
 	end
 	
 	script.Parent.MouseButton1Down:Connect(function()
