@@ -2353,7 +2353,7 @@ local function XBVG_fake_script() -- ToggleAutofarm.LocalScript
 			wait(.1)
 			while toggle do
 				wait(5)
-				game:GetService("Players").LocalPlayer.Character.Position = game:GetService("Workspace").Tower.TowerPart.Position
+				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = game:GetService("Workspace").Tower.TowerPart.Position
 			end
 		else
 			toggleOff:Play()
