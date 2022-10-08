@@ -1615,8 +1615,6 @@ local function FCDAQ_fake_script() -- TP.LocalScript
 			if Target[1] then
 				Target = Target[1]
 					lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
-			else
-				Notify("Invalid Player!",5)
 			end
 		end
 	end
@@ -1789,8 +1787,6 @@ local function NXKHRVR_fake_script() -- TP.LocalScript
 			if Target[1] then
 				Target = Target[1]
 				lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
-			else
-				Notify("Invalid Player!",5)
 			end
 		end
 	end
