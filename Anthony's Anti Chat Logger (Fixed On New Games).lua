@@ -1,3 +1,4 @@
+-- Credits to AnthonyIsntHere.
 if not game:IsLoaded() then
     game.Loaded:wait()
 end
