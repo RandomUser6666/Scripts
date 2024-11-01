@@ -100,7 +100,7 @@ do
 		titleLabel.Text = title
 		titleLabel.TextColor3 = self.Settings.DefaultTheme.Text
 		titleLabel.TextSize = 20
-		titleLabel.Font = Enum.Font.GothamBold
+		titleLabel.Font = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Bold)
 		titleLabel.TextXAlignment = Enum.TextXAlignment.Left
 		titleLabel.Parent = notification
 
@@ -112,7 +112,7 @@ do
 		contentLabel.Text = content
 		contentLabel.TextColor3 = self.Settings.DefaultTheme.Text
 		contentLabel.TextSize = 17
-		contentLabel.Font = Enum.Font.GothamMedium
+		contentLabel.Font = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.Medium)
 		contentLabel.TextXAlignment = Enum.TextXAlignment.Left
 		contentLabel.TextYAlignment = Enum.TextYAlignment.Top
 		contentLabel.TextWrapped = true
